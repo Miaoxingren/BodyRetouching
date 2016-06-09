@@ -1,10 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
-
+//opencv
 #include "cv.h"
 #include "highgui.h"
-
+//opengl
 #include <GL\glut.h>
-
+//openmesh
 #include <OpenMesh/Core/IO/MeshIO.hh>
 #include <OpenMesh/Core/Mesh/TriMesh_ArrayKernelT.hh>
 
@@ -324,11 +324,23 @@ void weightSlide(int pos) {
 }
 
 int main(int argc, char** argv) {
+	//键盘按键选项
+	std::cout << "Options:" << std::endl;
+	std::cout << "1 - zoon in X" << std::endl;
+	std::cout << "2 - zoon in Y" << std::endl;
+	std::cout << "3 - zoon in Z" << std::endl;
+	std::cout << "4 - zoom out X" << std::endl;
+	std::cout << "5 - zoom out Y" << std::endl;
+	std::cout << "6 - zoom out Z" << std::endl;
+	std::cout << "left button of mouse move - translate" << std::endl;
+	std::cout << "right button of mouse move - rotate" << std::endl;
+
 	//属性调节窗口
 	cvNamedWindow("Attributes", CV_WINDOW_AUTOSIZE);
 	cvCreateTrackbar("Height", "Attributes", &attrHeight, 100, heightSlide);
 	cvCreateTrackbar("Weight", "Attributes", &attrWeight, 100, weightSlide);
 
+	//模型窗口
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);
 	glutInitWindowPosition(100, 100);
